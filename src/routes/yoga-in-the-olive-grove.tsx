@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, PlaceholderBlock } from "@/components/placeholders";
+import yogaImg from "@/assets/yoga.jpg";
 
 export const Route = createFileRoute("/yoga-in-the-olive-grove")({
   head: () => ({
@@ -28,7 +29,7 @@ function Page() {
         subtitle="Moving slowly under trees that have never been in a hurry"
       />
 
-      <PhotoSlot prompt="Yoga mats laid on a prepared, level patch among olive trees; soft, even light; no people, or a small group mid-practice." />
+      <PhotoSlot src={yogaImg} alt="Yoga mats laid on a prepared patch among old olive trees." prompt="Yoga mats laid on a prepared, level patch among olive trees; soft, even light; no people, or a small group mid-practice." />
 
       <Article>
         <PlaceholderBlock kind="field-note">

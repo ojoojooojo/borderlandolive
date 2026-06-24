@@ -33,7 +33,10 @@ function Page() {
       />
 
       <PhotoSlot
+        src={groveHero}
+        alt="Olive grove on the hillside below Castelo de Vide at first light, with the walled town and castle above."
         prompt="Wide, full-bleed photograph of the olive grove below Castelo de Vide at first light — silver-green canopy, the walled town and castle on the hill above."
+        priority
       />
 
       <Article>

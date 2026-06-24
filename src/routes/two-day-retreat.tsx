@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, PlaceholderBlock } from "@/components/placeholders";
+import retreatHero from "@/assets/retreat-hero.jpg";
 
 export const Route = createFileRoute("/two-day-retreat")({
   head: () => ({
@@ -40,7 +41,7 @@ function Page() {
         </div>
       </section>
 
-      <PhotoSlot prompt="Hero-quality photograph: the olive grove at golden hour with a small dressed table or candlelit room glimpsed in the background — the welcome-dinner promise." aspect="21/9" />
+      <PhotoSlot src={retreatHero} alt="Olive grove at golden hour with a long wooden table set for a welcome dinner among the trees." prompt="Hero-quality photograph: the olive grove at golden hour with a small dressed table or candlelit room glimpsed in the background — the welcome-dinner promise." aspect="21/9" priority />
 
       <Article>
         <PlaceholderBlock kind="field-note">

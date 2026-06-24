@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, PlaceholderBlock } from "@/components/placeholders";
+import pranayamaImg from "@/assets/pranayama.jpg";
 
 export const Route = createFileRoute("/pranayama")({
   head: () => ({
@@ -28,7 +29,7 @@ function Page() {
         subtitle="Breath, in a place built for it"
       />
 
-      <PhotoSlot prompt="Close-up of olive leaves catching wind — the silver/green flicker that the page describes. Soft, slightly blurred." />
+      <PhotoSlot src={pranayamaImg} alt="Macro of olive leaves catching wind — silver underside and green top." prompt="Close-up of olive leaves catching wind — the silver/green flicker that the page describes. Soft, slightly blurred." />
 
       <Article>
         <PlaceholderBlock kind="field-note">

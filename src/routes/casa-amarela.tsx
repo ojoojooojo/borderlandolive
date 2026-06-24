@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { PlaceholderBlock } from "@/components/placeholders";
+import casaAmarelaImg from "@/assets/casa-amarela.jpg";
 
 export const Route = createFileRoute("/casa-amarela")({
   head: () => ({
@@ -28,7 +29,13 @@ function Page() {
         subtitle="Staying inside the frontier's history, not just visiting it"
       />
 
-      <PhotoSlot prompt="Exterior of Casa Amarela — an 18th-century yellow-washed manor house in Castelo de Vide, classified as a national monument." />
+      <PhotoSlot
+        src={casaAmarelaImg}
+        alt="Exterior of Casa Amarela, an 18th-century classified manor house in Castelo de Vide."
+        prompt="Exterior of Casa Amarela — an 18th-century yellow-washed manor house in Castelo de Vide, classified as a national monument."
+        credit="Source: casaamarelath.com (placeholder; replace with cleared imagery)."
+        priority
+      />
 
       <Article>
         <PlaceholderBlock kind="field-note">
