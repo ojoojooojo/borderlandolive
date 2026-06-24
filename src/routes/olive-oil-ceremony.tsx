@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, FieldNote, PlaceholderBlock } from "@/components/placeholders";
+import ceremonyImg from "@/assets/ceremony.jpg";
 
 export const Route = createFileRoute("/olive-oil-ceremony")({
   head: () => ({
@@ -28,7 +29,7 @@ function Page() {
         subtitle="A ritual that is older than any religion practiced on this border"
       />
 
-      <PhotoSlot prompt="Still-life photograph: a small clay or glass vessel of green-gold olive oil on a stone surface among olive leaves; warm directional light." />
+      <PhotoSlot src={ceremonyImg} alt="Small earthenware vessel of green-gold olive oil on a stone slab with olive leaves." prompt="Still-life photograph: a small clay or glass vessel of green-gold olive oil on a stone surface among olive leaves; warm directional light." />
 
       <Article>
         <PlaceholderBlock kind="field-note">

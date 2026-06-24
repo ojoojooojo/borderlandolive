@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, FieldNote, PlaceholderBlock } from "@/components/placeholders";
+import meditationImg from "@/assets/meditation.jpg";
 
 export const Route = createFileRoute("/guided-meditation")({
   head: () => ({
@@ -28,7 +29,7 @@ function Page() {
         subtitle="Sitting still in a place that has never been neutral ground"
       />
 
-      <PhotoSlot prompt="Quiet, low-key photograph of a small group seated on cushions among olive trees in soft morning light." />
+      <PhotoSlot src={meditationImg} alt="Small group seated in meditation among olive trees in soft morning light." prompt="Quiet, low-key photograph of a small group seated on cushions among olive trees in soft morning light." />
 
       <Article>
         <PlaceholderBlock kind="field-note">

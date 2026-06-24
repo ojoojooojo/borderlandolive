@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, FieldNote, PlaceholderBlock } from "@/components/placeholders";
+import groveHero from "@/assets/grove-hero.jpg";
 
 export const Route = createFileRoute("/the-olive-tree-of-the-border")({
   head: () => ({
@@ -32,7 +33,10 @@ function Page() {
       />
 
       <PhotoSlot
+        src={groveHero}
+        alt="Olive grove on the hillside below Castelo de Vide at first light, with the walled town and castle above."
         prompt="Wide, full-bleed photograph of the olive grove below Castelo de Vide at first light — silver-green canopy, the walled town and castle on the hill above."
+        priority
       />
 
       <Article>

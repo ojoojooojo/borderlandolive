@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { PlaceholderBlock } from "@/components/placeholders";
+import casaDoParqueImg from "@/assets/casa-do-parque.jpg";
 
 export const Route = createFileRoute("/casa-do-parque")({
   head: () => ({
@@ -28,7 +29,12 @@ function Page() {
         subtitle="The same stillness, in a contemporary register"
       />
 
-      <PhotoSlot prompt="Exterior or interior of Casa do Parque — contemporary, light-filled, calm. The town park or groves glimpsed through a window." />
+      <PhotoSlot
+        src={casaDoParqueImg}
+        alt="Contemporary white-washed hotel building beside a park in Castelo de Vide, at warm late-afternoon light."
+        prompt="Exterior or interior of Casa do Parque — contemporary, light-filled, calm. The town park or groves glimpsed through a window."
+        priority
+      />
 
       <Article>
         <PlaceholderBlock kind="field-note">

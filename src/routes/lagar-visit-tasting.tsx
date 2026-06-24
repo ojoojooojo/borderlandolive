@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { PlaceholderBlock } from "@/components/placeholders";
+import lagarImg from "@/assets/lagar.jpg";
 
 export const Route = createFileRoute("/lagar-visit-tasting")({
   head: () => ({
@@ -28,7 +29,7 @@ function Page() {
         subtitle="Seeing where the stillness turns into oil"
       />
 
-      <PhotoSlot prompt="Interior of a small family lagar near Castelo de Vide — stone, equipment, golden oil being poured or tasted." />
+      <PhotoSlot src={lagarImg} alt="Interior of a small Alentejo lagar, green-gold oil pouring into a ceramic bowl." prompt="Interior of a small family lagar near Castelo de Vide — stone, equipment, golden oil being poured or tasted." />
 
       <Article>
         <PlaceholderBlock kind="field-note">

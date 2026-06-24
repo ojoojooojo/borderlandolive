@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { PhotoSlot } from "@/components/page-shell";
 import { FieldNote } from "@/components/placeholders";
+import grovePortrait from "@/assets/grove-hero-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,8 +61,11 @@ function Home() {
 
           <div className="md:col-span-5">
             <PhotoSlot
+              src={grovePortrait}
+              alt="Olive grove on the hillside below Castelo de Vide, with the walled town on the hill above."
               prompt="Wide, full-bleed photograph of the olive grove below Castelo de Vide at first light — silver-green canopy, the walled town and castle on the hill above."
               aspect="3/4"
+              priority
             />
           </div>
         </div>
