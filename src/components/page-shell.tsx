@@ -42,27 +42,57 @@ export function PhotoSlot({
   caption,
   prompt,
   aspect = "16/9",
+  src,
+  alt,
+  credit,
+  priority = false,
 }: {
   caption?: string;
   prompt: string;
   aspect?: string;
+  src?: string;
+  alt?: string;
+  credit?: string;
+  priority?: boolean;
 }) {
   return (
     <figure className="mx-auto my-12 max-w-4xl px-6">
-      <div
-        className="flex w-full items-center justify-center border border-dashed border-rule bg-sand/30 text-center"
-        style={{ aspectRatio: aspect }}
-      >
-        <div className="max-w-md px-6 py-8 font-sans text-sm text-muted-foreground">
-          <div className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-olive-deep">
-            Photography slot
-          </div>
-          <p className="leading-relaxed">{prompt}</p>
+      {src ? (
+        <div
+          className="relative w-full overflow-hidden bg-sand/30"
+          style={{ aspectRatio: aspect }}
+        >
+          <img
+            src={src}
+            alt={alt ?? prompt}
+            loading={priority ? "eager" : "lazy"}
+            className="h-full w-full object-cover"
+          />
+          <span
+            className="absolute left-3 top-3 rounded-sm bg-bone/90 px-2 py-1 text-[0.62rem] font-medium uppercase tracking-[0.16em] text-olive-deep shadow-sm"
+            title={`Placeholder — replace with real photography. Prompt: ${prompt}`}
+          >
+            Placeholder photo
+          </span>
         </div>
-      </div>
-      {caption && (
+      ) : (
+        <div
+          className="flex w-full items-center justify-center border border-dashed border-rule bg-sand/30 text-center"
+          style={{ aspectRatio: aspect }}
+        >
+          <div className="max-w-md px-6 py-8 font-sans text-sm text-muted-foreground">
+            <div className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-olive-deep">
+              Photography slot
+            </div>
+            <p className="leading-relaxed">{prompt}</p>
+          </div>
+        </div>
+      )}
+      {(caption || credit) && (
         <figcaption className="mt-3 text-center font-serif text-sm italic text-muted-foreground">
           {caption}
+          {caption && credit ? " · " : null}
+          {credit && <span className="not-italic text-[0.78rem] tracking-wide">{credit}</span>}
         </figcaption>
       )}
     </figure>
