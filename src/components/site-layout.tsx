@@ -39,6 +39,7 @@ function NavLink({
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const [expOpen, setExpOpen] = useState(false);
+  const [stayOpen, setStayOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -86,7 +87,35 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             </div>
 
             <NavLink to="/two-day-retreat">The Retreat</NavLink>
-            <NavLink to="/casa-amarela">Stay</NavLink>
+            <div
+              className="relative"
+              onMouseEnter={() => setStayOpen(true)}
+              onMouseLeave={() => setStayOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setStayOpen((v) => !v)}
+                className="text-[0.78rem] uppercase tracking-[0.18em] text-walnut/80 transition-colors hover:text-olive-deep"
+              >
+                Stay
+              </button>
+              {stayOpen && (
+                <div className="absolute left-1/2 top-full z-20 w-56 -translate-x-1/2 pt-3">
+                  <div className="rounded-sm border border-rule/60 bg-card py-2 shadow-sm">
+                    {houses.map((h) => (
+                      <Link
+                        key={h.to}
+                        to={h.to}
+                        onClick={() => setStayOpen(false)}
+                        className="block px-4 py-2 font-serif text-[1.02rem] text-walnut hover:bg-sand/40 hover:text-olive-deep"
+                      >
+                        {h.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
             <NavLink to="/book">Book</NavLink>
           </nav>
 
