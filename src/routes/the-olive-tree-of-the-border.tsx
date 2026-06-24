@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, FieldNote, PlaceholderBlock } from "@/components/placeholders";
+import groveHero from "@/assets/grove-hero.jpg";
 
 export const Route = createFileRoute("/the-olive-tree-of-the-border")({
   head: () => ({
