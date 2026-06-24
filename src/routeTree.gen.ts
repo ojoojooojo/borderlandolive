@@ -9,8 +9,74 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YogaInTheOliveGroveRouteImport } from './routes/yoga-in-the-olive-grove'
+import { Route as TwoDayRetreatRouteImport } from './routes/two-day-retreat'
+import { Route as TheOliveTreeOfTheBorderRouteImport } from './routes/the-olive-tree-of-the-border'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PranayamaRouteImport } from './routes/pranayama'
+import { Route as OliveOilCeremonyRouteImport } from './routes/olive-oil-ceremony'
+import { Route as LagarVisitTastingRouteImport } from './routes/lagar-visit-tasting'
+import { Route as GuidedMeditationRouteImport } from './routes/guided-meditation'
+import { Route as CasaDoParqueRouteImport } from './routes/casa-do-parque'
+import { Route as CasaAmarelaRouteImport } from './routes/casa-amarela'
+import { Route as BookRouteImport } from './routes/book'
 import { Route as IndexRouteImport } from './routes/index'
 
+const YogaInTheOliveGroveRoute = YogaInTheOliveGroveRouteImport.update({
+  id: '/yoga-in-the-olive-grove',
+  path: '/yoga-in-the-olive-grove',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TwoDayRetreatRoute = TwoDayRetreatRouteImport.update({
+  id: '/two-day-retreat',
+  path: '/two-day-retreat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheOliveTreeOfTheBorderRoute = TheOliveTreeOfTheBorderRouteImport.update({
+  id: '/the-olive-tree-of-the-border',
+  path: '/the-olive-tree-of-the-border',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PranayamaRoute = PranayamaRouteImport.update({
+  id: '/pranayama',
+  path: '/pranayama',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OliveOilCeremonyRoute = OliveOilCeremonyRouteImport.update({
+  id: '/olive-oil-ceremony',
+  path: '/olive-oil-ceremony',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LagarVisitTastingRoute = LagarVisitTastingRouteImport.update({
+  id: '/lagar-visit-tasting',
+  path: '/lagar-visit-tasting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidedMeditationRoute = GuidedMeditationRouteImport.update({
+  id: '/guided-meditation',
+  path: '/guided-meditation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasaDoParqueRoute = CasaDoParqueRouteImport.update({
+  id: '/casa-do-parque',
+  path: '/casa-do-parque',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasaAmarelaRoute = CasaAmarelaRouteImport.update({
+  id: '/casa-amarela',
+  path: '/casa-amarela',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookRoute = BookRouteImport.update({
+  id: '/book',
+  path: '/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +85,186 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/book': typeof BookRoute
+  '/casa-amarela': typeof CasaAmarelaRoute
+  '/casa-do-parque': typeof CasaDoParqueRoute
+  '/guided-meditation': typeof GuidedMeditationRoute
+  '/lagar-visit-tasting': typeof LagarVisitTastingRoute
+  '/olive-oil-ceremony': typeof OliveOilCeremonyRoute
+  '/pranayama': typeof PranayamaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/the-olive-tree-of-the-border': typeof TheOliveTreeOfTheBorderRoute
+  '/two-day-retreat': typeof TwoDayRetreatRoute
+  '/yoga-in-the-olive-grove': typeof YogaInTheOliveGroveRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/book': typeof BookRoute
+  '/casa-amarela': typeof CasaAmarelaRoute
+  '/casa-do-parque': typeof CasaDoParqueRoute
+  '/guided-meditation': typeof GuidedMeditationRoute
+  '/lagar-visit-tasting': typeof LagarVisitTastingRoute
+  '/olive-oil-ceremony': typeof OliveOilCeremonyRoute
+  '/pranayama': typeof PranayamaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/the-olive-tree-of-the-border': typeof TheOliveTreeOfTheBorderRoute
+  '/two-day-retreat': typeof TwoDayRetreatRoute
+  '/yoga-in-the-olive-grove': typeof YogaInTheOliveGroveRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/book': typeof BookRoute
+  '/casa-amarela': typeof CasaAmarelaRoute
+  '/casa-do-parque': typeof CasaDoParqueRoute
+  '/guided-meditation': typeof GuidedMeditationRoute
+  '/lagar-visit-tasting': typeof LagarVisitTastingRoute
+  '/olive-oil-ceremony': typeof OliveOilCeremonyRoute
+  '/pranayama': typeof PranayamaRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/the-olive-tree-of-the-border': typeof TheOliveTreeOfTheBorderRoute
+  '/two-day-retreat': typeof TwoDayRetreatRoute
+  '/yoga-in-the-olive-grove': typeof YogaInTheOliveGroveRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/book'
+    | '/casa-amarela'
+    | '/casa-do-parque'
+    | '/guided-meditation'
+    | '/lagar-visit-tasting'
+    | '/olive-oil-ceremony'
+    | '/pranayama'
+    | '/sitemap.xml'
+    | '/the-olive-tree-of-the-border'
+    | '/two-day-retreat'
+    | '/yoga-in-the-olive-grove'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/book'
+    | '/casa-amarela'
+    | '/casa-do-parque'
+    | '/guided-meditation'
+    | '/lagar-visit-tasting'
+    | '/olive-oil-ceremony'
+    | '/pranayama'
+    | '/sitemap.xml'
+    | '/the-olive-tree-of-the-border'
+    | '/two-day-retreat'
+    | '/yoga-in-the-olive-grove'
+  id:
+    | '__root__'
+    | '/'
+    | '/book'
+    | '/casa-amarela'
+    | '/casa-do-parque'
+    | '/guided-meditation'
+    | '/lagar-visit-tasting'
+    | '/olive-oil-ceremony'
+    | '/pranayama'
+    | '/sitemap.xml'
+    | '/the-olive-tree-of-the-border'
+    | '/two-day-retreat'
+    | '/yoga-in-the-olive-grove'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookRoute: typeof BookRoute
+  CasaAmarelaRoute: typeof CasaAmarelaRoute
+  CasaDoParqueRoute: typeof CasaDoParqueRoute
+  GuidedMeditationRoute: typeof GuidedMeditationRoute
+  LagarVisitTastingRoute: typeof LagarVisitTastingRoute
+  OliveOilCeremonyRoute: typeof OliveOilCeremonyRoute
+  PranayamaRoute: typeof PranayamaRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TheOliveTreeOfTheBorderRoute: typeof TheOliveTreeOfTheBorderRoute
+  TwoDayRetreatRoute: typeof TwoDayRetreatRoute
+  YogaInTheOliveGroveRoute: typeof YogaInTheOliveGroveRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yoga-in-the-olive-grove': {
+      id: '/yoga-in-the-olive-grove'
+      path: '/yoga-in-the-olive-grove'
+      fullPath: '/yoga-in-the-olive-grove'
+      preLoaderRoute: typeof YogaInTheOliveGroveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/two-day-retreat': {
+      id: '/two-day-retreat'
+      path: '/two-day-retreat'
+      fullPath: '/two-day-retreat'
+      preLoaderRoute: typeof TwoDayRetreatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-olive-tree-of-the-border': {
+      id: '/the-olive-tree-of-the-border'
+      path: '/the-olive-tree-of-the-border'
+      fullPath: '/the-olive-tree-of-the-border'
+      preLoaderRoute: typeof TheOliveTreeOfTheBorderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pranayama': {
+      id: '/pranayama'
+      path: '/pranayama'
+      fullPath: '/pranayama'
+      preLoaderRoute: typeof PranayamaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/olive-oil-ceremony': {
+      id: '/olive-oil-ceremony'
+      path: '/olive-oil-ceremony'
+      fullPath: '/olive-oil-ceremony'
+      preLoaderRoute: typeof OliveOilCeremonyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lagar-visit-tasting': {
+      id: '/lagar-visit-tasting'
+      path: '/lagar-visit-tasting'
+      fullPath: '/lagar-visit-tasting'
+      preLoaderRoute: typeof LagarVisitTastingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guided-meditation': {
+      id: '/guided-meditation'
+      path: '/guided-meditation'
+      fullPath: '/guided-meditation'
+      preLoaderRoute: typeof GuidedMeditationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/casa-do-parque': {
+      id: '/casa-do-parque'
+      path: '/casa-do-parque'
+      fullPath: '/casa-do-parque'
+      preLoaderRoute: typeof CasaDoParqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/casa-amarela': {
+      id: '/casa-amarela'
+      path: '/casa-amarela'
+      fullPath: '/casa-amarela'
+      preLoaderRoute: typeof CasaAmarelaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book': {
+      id: '/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +277,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookRoute: BookRoute,
+  CasaAmarelaRoute: CasaAmarelaRoute,
+  CasaDoParqueRoute: CasaDoParqueRoute,
+  GuidedMeditationRoute: GuidedMeditationRoute,
+  LagarVisitTastingRoute: LagarVisitTastingRoute,
+  OliveOilCeremonyRoute: OliveOilCeremonyRoute,
+  PranayamaRoute: PranayamaRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TheOliveTreeOfTheBorderRoute: TheOliveTreeOfTheBorderRoute,
+  TwoDayRetreatRoute: TwoDayRetreatRoute,
+  YogaInTheOliveGroveRoute: YogaInTheOliveGroveRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
