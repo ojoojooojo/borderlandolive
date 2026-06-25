@@ -3,20 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, PlaceholderBlock } from "@/components/placeholders";
 import pranayamaImg from "@/assets/pranayama.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "Pranayama in the Olive Grove — Borderland Olive";
+const DESC =
+  "Guided breathwork practiced among the olive trees below Castelo de Vide. No prior experience required; small, exclusive groups.";
 
 export const Route = createFileRoute("/pranayama")({
-  head: () => ({
-    meta: [
-      { title: "Pranayama in the Olive Grove — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "Guided breathwork practiced among the olive trees below Castelo de Vide. No prior experience required; small, exclusive groups.",
-      },
-      { property: "og:title", content: "Pranayama in the Olive Grove" },
-      { property: "og:description", content: "Breath, in a place built for it." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/pranayama",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

@@ -3,23 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, PlaceholderBlock } from "@/components/placeholders";
 import retreatHero from "@/assets/retreat-hero.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "The Two-Day Border Retreat — Borderland Olive";
+const DESC =
+  "Two days in the olive groves below Castelo de Vide — accommodation at Casa Amarela or Casa do Parque, pranayama, a lagar visit and tasting, and a welcome dinner. Small, exclusive groups.";
 
 export const Route = createFileRoute("/two-day-retreat")({
-  head: () => ({
-    meta: [
-      { title: "The Two-Day Border Retreat — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "Two days in the olive groves below Castelo de Vide — accommodation at Casa Amarela or Casa do Parque, pranayama, a lagar visit and tasting, and a welcome dinner. Small, exclusive groups.",
-      },
-      { property: "og:title", content: "The Two-Day Border Retreat" },
-      {
-        property: "og:description",
-        content: "Everything the grove offers, given the time it actually needs.",
-      },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/two-day-retreat",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

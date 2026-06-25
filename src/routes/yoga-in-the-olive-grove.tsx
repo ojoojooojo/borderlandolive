@@ -3,20 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, PlaceholderBlock } from "@/components/placeholders";
 import yogaImg from "@/assets/yoga.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "Yoga in the Olive Grove — Borderland Olive";
+const DESC =
+  "Open-level yoga practiced on a prepared area among the olive trees below Castelo de Vide. Stillness and breath, not physical intensity.";
 
 export const Route = createFileRoute("/yoga-in-the-olive-grove")({
-  head: () => ({
-    meta: [
-      { title: "Yoga in the Olive Grove — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "Open-level yoga practiced on a prepared area among the olive trees below Castelo de Vide. Stillness and breath, not physical intensity.",
-      },
-      { property: "og:title", content: "Yoga in the Olive Grove" },
-      { property: "og:description", content: "Moving slowly under trees that have never been in a hurry." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/yoga-in-the-olive-grove",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 
