@@ -3,20 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { PlaceholderBlock } from "@/components/placeholders";
 import lagarImg from "@/assets/lagar.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "Lagar Visit & Tasting — Borderland Olive";
+const DESC =
+  "A complement to the contemplative practices: a visit to a working lagar near Castelo de Vide and a tasting of the oils produced from this hillside landscape.";
 
 export const Route = createFileRoute("/lagar-visit-tasting")({
-  head: () => ({
-    meta: [
-      { title: "Lagar Visit & Tasting — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "A complement to the contemplative practices: a visit to a working lagar near Castelo de Vide and a tasting of the oils produced from this hillside landscape.",
-      },
-      { property: "og:title", content: "Lagar Visit & Tasting" },
-      { property: "og:description", content: "Seeing where the stillness turns into oil." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/lagar-visit-tasting",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

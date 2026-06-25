@@ -3,20 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, FieldNote, PlaceholderBlock } from "@/components/placeholders";
 import ceremonyImg from "@/assets/ceremony.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "The Olive Oil Ceremony — Borderland Olive";
+const DESC =
+  "A small-group ceremony built around the frontier history of Castelo de Vide — Roman, Visigothic, Arab, Christian — and the particular character of hillside-lagar olive oil.";
 
 export const Route = createFileRoute("/olive-oil-ceremony")({
-  head: () => ({
-    meta: [
-      { title: "The Olive Oil Ceremony — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "A small-group ceremony built around the frontier history of Castelo de Vide — Roman, Visigothic, Arab, Christian — and the particular character of hillside-lagar olive oil.",
-      },
-      { property: "og:title", content: "The Olive Oil Ceremony" },
-      { property: "og:description", content: "A ritual older than any religion practiced on this border." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/olive-oil-ceremony",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

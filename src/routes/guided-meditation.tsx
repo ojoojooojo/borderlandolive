@@ -3,20 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, FieldNote, PlaceholderBlock } from "@/components/placeholders";
 import meditationImg from "@/assets/meditation.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "Guided Meditation in the Olive Grove — Borderland Olive";
+const DESC =
+  "An hour of guided stillness in an olive grove below Castelo de Vide — no experience required, small groups, on a border that was, for two thousand years, never neutral ground.";
 
 export const Route = createFileRoute("/guided-meditation")({
-  head: () => ({
-    meta: [
-      { title: "Guided Meditation in the Olive Grove — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "An hour of guided stillness in an olive grove below Castelo de Vide — no experience required, small groups, on a border that was, for two thousand years, never neutral ground.",
-      },
-      { property: "og:title", content: "Guided Meditation in the Olive Grove" },
-      { property: "og:description", content: "Sitting still in a place that has never been neutral ground." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/guided-meditation",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

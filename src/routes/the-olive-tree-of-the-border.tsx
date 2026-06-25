@@ -3,23 +3,31 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { Insert, FieldNote, PlaceholderBlock } from "@/components/placeholders";
 import groveHero from "@/assets/grove-hero.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "The Olive Tree of the Border — Borderland Olive";
+const DESC =
+  "Why an olive grove on a frontier becomes a place to be still. The idea behind Borderland Olive — meditation, ritual and stillness in the groves below Castelo de Vide.";
 
 export const Route = createFileRoute("/the-olive-tree-of-the-border")({
-  head: () => ({
-    meta: [
-      { title: "The Olive Tree of the Border — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "Why an olive grove on a frontier becomes a place to be still. The idea behind Borderland Olive — meditation, ritual and stillness in the groves below Castelo de Vide.",
-      },
-      { property: "og:title", content: "The Olive Tree of the Border" },
-      {
-        property: "og:description",
-        content: "Why an olive grove on a frontier becomes a place to be still.",
-      },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/the-olive-tree-of-the-border",
+      title: TITLE,
+      description: DESC,
+      type: "article",
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

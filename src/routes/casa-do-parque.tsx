@@ -3,20 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { PlaceholderBlock } from "@/components/placeholders";
 import casaDoParqueImg from "@/assets/casa-do-parque.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "Casa do Parque — Borderland Olive";
+const DESC =
+  "A contemporary, comfortable house near the town park and the olive groves of Castelo de Vide — one of two settings for the Two-Day Border Retreat.";
 
 export const Route = createFileRoute("/casa-do-parque")({
-  head: () => ({
-    meta: [
-      { title: "Casa do Parque — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "A contemporary, comfortable house near the town park and the olive groves of Castelo de Vide — one of two settings for the Two-Day Border Retreat.",
-      },
-      { property: "og:title", content: "Casa do Parque" },
-      { property: "og:description", content: "The same stillness, in a contemporary register." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/casa-do-parque",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

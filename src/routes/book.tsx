@@ -2,20 +2,30 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { ArticleHeader } from "@/components/page-shell";
 import { Insert, PlaceholderBlock } from "@/components/placeholders";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "Book Your Visit — Borderland Olive";
+const DESC =
+  "Enquire about small-group retreats, individual experiences, or a stay at Casa Amarela or Casa do Parque. Booking is direct, by arrangement.";
 
 export const Route = createFileRoute("/book")({
-  head: () => ({
-    meta: [
-      { title: "Book Your Visit — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "Enquire about small-group retreats, individual experiences, or a stay at Casa Amarela or Casa do Parque. Booking is direct, by arrangement.",
-      },
-      { property: "og:title", content: "Book Your Visit — Borderland Olive" },
-      { property: "og:description", content: "Small groups, by arrangement." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/book",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 

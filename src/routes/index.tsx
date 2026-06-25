@@ -3,24 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { PhotoSlot } from "@/components/page-shell";
 import { FieldNote } from "@/components/placeholders";
 import grovePortrait from "@/assets/grove-hero-portrait.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const HOME_TITLE = "Borderland Olive — Slow retreats in the olive groves of Castelo de Vide";
+const HOME_DESC =
+  "Small-group meditation, yoga, pranayama and an olive oil ceremony among the ancient groves of Castelo de Vide, on the Alto Alentejo border.";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Borderland Olive — Slow retreats in the olive groves of Castelo de Vide" },
-      {
-        name: "description",
-        content:
-          "Small-group meditation, yoga, pranayama and an olive oil ceremony among the ancient groves of Castelo de Vide, on the Alto Alentejo border.",
-      },
-      { property: "og:title", content: "Borderland Olive" },
-      {
-        property: "og:description",
-        content:
-          "Slow, small-group retreats in the olive groves of Castelo de Vide.",
-      },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/",
+      title: HOME_TITLE,
+      description: HOME_DESC,
+    });
+    return {
+      meta: [
+        { title: HOME_TITLE },
+        { name: "description", content: HOME_DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Home,
 });
 
