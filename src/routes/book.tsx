@@ -64,17 +64,9 @@ function Page() {
 
           <h2>Get in touch</h2>
 
-          <p>
-            Send us a message directly at{" "}
-            <a
-              href="mailto:[INSERT — booking email]?subject=Borderland%20Olive%20Booking%20Enquiry&body=Hello%2C%0A%0AI'd%20like%20to%20enquire%20about%3A%0A%0APreferred%20dates%3A%0AGroup%20size%3A%0A%0AThank%20you."
-              className="font-medium"
-            >
-              [INSERT — booking email]
-            </a>
-            , including which experience(s) interest you, your preferred dates,
-            and group size.
-          </p>
+          <p className="mt-4 font-serif text-[1.05rem] text-walnut">
+  Booking email coming soon
+</p>
 
           <PlaceholderBlock kind="insert">
             Phone / WhatsApp if you want to offer it alongside email.
