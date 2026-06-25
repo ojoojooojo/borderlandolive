@@ -211,12 +211,9 @@ function SiteFooter() {
           <div className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-olive-deep">
             Get in touch
           </div>
-          <a
-            href="mailto:[INSERT — booking email]?subject=Borderland%20Olive%20Enquiry"
-            className="mt-4 block font-serif text-[1.05rem] text-walnut underline decoration-olive/40 underline-offset-4 hover:decoration-olive-deep"
-          >
-            [INSERT — booking email]
-          </a>
+         <p className="mt-4 font-serif text-[1.05rem] text-walnut">
+  Booking email coming soon
+</p>
 
           <div className="mt-8 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-olive-deep">
             Sibling sites
