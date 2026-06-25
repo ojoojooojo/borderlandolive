@@ -3,20 +3,30 @@ import { SiteLayout } from "@/components/site-layout";
 import { Article, ArticleHeader, NextSteps, PhotoSlot } from "@/components/page-shell";
 import { PlaceholderBlock } from "@/components/placeholders";
 import casaAmarelaImg from "@/assets/casa-amarela.jpg";
+import { sharePreviewLoader, sharePreviewTags } from "@/lib/share-preview";
+
+const TITLE = "Casa Amarela — Borderland Olive";
+const DESC =
+  "An 18th-century manor house, classified as a national monument, in the walled centre of Castelo de Vide. One of two settings for the Two-Day Border Retreat.";
 
 export const Route = createFileRoute("/casa-amarela")({
-  head: () => ({
-    meta: [
-      { title: "Casa Amarela — Borderland Olive" },
-      {
-        name: "description",
-        content:
-          "An 18th-century manor house, classified as a national monument, in the walled centre of Castelo de Vide. One of two settings for the Two-Day Border Retreat.",
-      },
-      { property: "og:title", content: "Casa Amarela" },
-      { property: "og:description", content: "Staying inside the frontier's history, not just visiting it." },
-    ],
-  }),
+  loader: sharePreviewLoader,
+  head: ({ loaderData }) => {
+    const share = sharePreviewTags({
+      origin: loaderData?.origin ?? "",
+      path: "/casa-amarela",
+      title: TITLE,
+      description: DESC,
+    });
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        ...share.meta,
+      ],
+      links: share.links,
+    };
+  },
   component: Page,
 });
 
